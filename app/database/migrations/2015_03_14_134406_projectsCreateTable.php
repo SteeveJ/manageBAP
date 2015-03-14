@@ -15,10 +15,7 @@ class ProjectsCreateTable extends Migration {
 
         Schema::create('projects', function(Blueprint $table){
             $table->increments('id');
-            $table->string('nameClient');
-            $table->integer('phoneNumber');
-            $table->string('email');
-            $table->string('nameProject');
+            $table->string('name');
             $table->text('description');
             $table->boolean('validated');
             $table->timestamp('created_at');

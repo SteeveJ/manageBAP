@@ -18,6 +18,14 @@ class projectsController extends BaseController
     }
     public function update()
     {
-        return View::make('project.updateForm');
+        // récupération des données envoyer par le formulaire
+        $name = Input::get('name');
+        $description = Input::get('description');
+
+        // On les retourne avec un tableau
+        return View::make('project.updateForm', [
+            'name' => $name,
+            'description' => $description,
+        ]);
     }
 }
