@@ -16,3 +16,27 @@ Route::get('/', ['uses' => 'projectsController@index', 'as' => 'project.home']);
 Route::get('/formEdit', ['uses' => 'projectsController@edit', 'as' => 'project.editForm']);
 
 Route::post('/formUpdate', ['uses' => 'projectsController@update', 'as' => 'project.updateForm']);
+
+/* */
+
+
+/* Login / Logout / Profile routes */
+/*
+Route::get('/', ['as' => 'home', function()
+{
+    return 'Home page!!';
+}]);
+*/
+Route::get('profile', function()
+{
+    return "Welcome. Your email adress is " . Auth::user()->email;
+})->before('auth');
+
+
+
+
+Route::get('login', 'SessionsController@create');
+
+Route::get('logout', 'SessionsController@destroy');
+
+Route::resource('sessions', 'SessionsController', ['only' => ['index', 'create', 'destroy']]);
